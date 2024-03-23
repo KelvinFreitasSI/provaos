@@ -2,12 +2,28 @@ package com.curso.domains;
 
 import java.util.UUID;
 
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "hospital")
 public class Hospital {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String name;
     private String address;
     private String phoneNumber;
+
+    @ManyToOne
+    @JoinColumn(name = "idserviceorderhosp")
     private ServiceOrderHosp serviceOrderHosp;
     
     public Hospital() {
